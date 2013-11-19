@@ -15,18 +15,18 @@ public class EasyLevel extends Actor implements IScreen
      */
     int mouseX, mouseY;
     List modeScreen,modeBtn,Htile,modeKnb;
-    public static HashMap matrix =  new HashMap();
+   // public static HashMap matrix =  new HashMap();
     public static Boolean modeFlag = false;
     World pw;
         
     public EasyLevel(World world)
     {
-        pw = world;
-        modeScreen =  pw.getObjects(ModeScreen.class);
+      pw = world;
+      modeScreen =  pw.getObjects(ModeScreen.class);
       modeBtn =  pw.getObjects(SelectModeButton.class);
       Htile = pw.getObjects(HTile.class);
       modeKnb = pw.getObjects(ModeKnob.class);
-       
+      SelectModeButton.matrix =  new HashMap();
       pw.removeObjects(modeScreen);
       pw.removeObjects(modeBtn);
       pw.removeObjects(Htile);
@@ -35,7 +35,7 @@ public class EasyLevel extends Actor implements IScreen
       pw.setBackground(img);
       
       pw.addObject(new Dashboard(),890,140);
-      pw.addObject(new Canvas(),245,245);
+    //  pw.addObject(new Canvas(),245,245);
       pw.addObject(new LeftButton(),100,535);
       pw.addObject(new RightButton(),650,535);
       pw.addObject(new MessageBoard(),650,350);
@@ -56,6 +56,7 @@ public class EasyLevel extends Actor implements IScreen
             for (int x = 0; x < 3; x++) {  
 
                 for (int y = 0; y < 3; y++) {  
+                    
                     Canvas chunkgrid = new Canvas();
                     GreenfootImage imggrid = new GreenfootImage("3x3grid.jpg");
                     chunkgrid.setImage(imggrid); 
@@ -65,7 +66,7 @@ public class EasyLevel extends Actor implements IScreen
                     int midY = imggrid.getHeight();
                     String imageName = "img"+ i +".jpg";
                     System.out.println("Image Name ::" + imageName+ "   mid points :: " + midX + "  " + midY);
-                    matrix.put(i,imageName);
+                    SelectModeButton.matrix.put(i,imageName);
                     i++;
                 }
                 cntY = cntY+121;

@@ -46,7 +46,10 @@ public class SplitImageDrag extends Image
             System.out.println("name :: " + name + "  " + this.getImage());
             List list = pw.getObjects(Canvas.class);
             List matrixList = pw.getObjectsAt(finalX, finalY, Canvas.class);
-            Actor canvas = (Actor) matrixList.get(0);
+            
+            if(!matrixList.isEmpty()){
+            
+                Actor canvas = (Actor) matrixList.get(0);
             System.out.println("Size :: " + list.size() + "  " + matrixList.size());
             
             for(int i =0;i<list.size();i++)
@@ -78,6 +81,10 @@ public class SplitImageDrag extends Image
            }
            // this is final flag. it will true only if all images are place correctly.
            System.out.println("Final Flag :: " + correct);
+            
+            }
+            
+            
        }
        
     }  
