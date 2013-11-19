@@ -24,20 +24,7 @@ public class Canvas extends Actor
             splitImageIntoChunks("panda.jpg");
             notifyImageBoard();
             removeTouching(LeftImage.class);
-        }
-        
-        else if(isTouching(MiddleImage.class))
-        {
-            splitImageIntoChunks("penguin.jpg");
-            notifyImageBoard();
-            removeTouching(MiddleImage.class);
-        }
-        
-        else if(isTouching(RightImage.class))
-        {
-            splitImageIntoChunks("minion.jpg");
-            notifyImageBoard();
-            removeTouching(RightImage.class);
+          //  pw.addObject(new Submit(),220,535);
         }
     }   
 
@@ -45,7 +32,7 @@ public class Canvas extends Actor
     {
         try{
 
-            File file = new File("images/" + imageName); // I have bear.jpg in my working directory  
+            File file = new File("images/panda.jpg"); // I have bear.jpg in my working directory  
             FileInputStream fis = new FileInputStream(file);  
             BufferedImage image = ImageIO.read(fis); //reading the image file  
 
@@ -90,7 +77,7 @@ public class Canvas extends Actor
 
         for (int i=0;i<9;i++)
         {
-            SplitImageDrag chunk = new SplitImageDrag();
+            Image chunk = new Image();
             GreenfootImage img = new GreenfootImage("img"+i+".jpg");
             chunk.setImage(img); 
             w.addObject(chunk,700+cnt,100);
