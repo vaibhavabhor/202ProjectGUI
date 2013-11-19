@@ -32,7 +32,7 @@ public class Image extends Actor
             mouseY=mouse.getY(); 
             setLocation(mouseX, mouseY);
            
-        }
+        }  
 
         if(Greenfoot.mouseDragEnded(this))
         {
@@ -69,7 +69,7 @@ public class Image extends Actor
            }
            else
            {
-               this.setLocation(666,100);
+             //  this.setLocation(666,100);
                System.out.println("not matching");
            }
                

@@ -9,41 +9,80 @@ import java.util.*;
  */
 public class SelectModeButton extends CommandButton
 {
+    /**
+     * Act - do whatever the SelectModeButton wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    int mouseX, mouseY;
+    List modeScreen,modeBtn,modeKnb,Htile;
     public static HashMap matrix =  new HashMap();
     public static Boolean modeFlag = false;
-
+    
     public void act() 
     {
-
-        if(Greenfoot.mousePressed(this))
+        World pw = getWorld();
+        modeFlag = true;
+        modeScreen =  pw.getObjects(ModeScreen.class);
+        modeBtn =  pw.getObjects(SelectModeButton.class);
+        modeKnb = pw.getObjects(ModeKnob.class);
+        Htile = pw.getObjects(HTile.class);
+            
+        // Add your action code here.
+         if(Greenfoot.mousePressed(this))
         {
-            World pw = getWorld();
-            modeFlag = true;
-            List modeScreen =  pw.getObjects(ModeScreen.class);
-            List modeBtn =  pw.getObjects(SelectModeButton.class);
-            List modeKnb=pw.getObjects(ModeKnob.class);
-            List Htile=pw.getObjects(HTile.class);
+            //ModeKnob knob = modeKnb[0];
+            
+            for (Object obj : modeKnb)  
+            {  
+                ModeKnob knob = (ModeKnob) obj; // sub-casting  
+                mouseX = knob.getX();
+                mouseY = knob.getY();
+                System.out.println("Knob cooridnates are "+ mouseX + " and "+ mouseY );
+                // change location of 'ps'  
+                
+            if (mouseY > 240
+                && mouseY < 260)
+            {
+                if(mouseX > 466 
+                && mouseX < 480)
+                {
+                    System.out.println("Its easy level!");
+                     navigate(pw);
+                }  
+                else if(mouseX > 668 
+                && mouseX < 680)
+                {
+                    System.out.println("Its hard level!");
+                     navigate(pw);
+                }
+            }
+            }
+        } 
+    }
+    
+    public void navigate(World pw)
+    {
+      pw.removeObjects(modeScreen);
+      pw.removeObjects(modeBtn);
+      pw.removeObjects(Htile);
+      pw.removeObjects(modeKnb);
+      GreenfootImage img = new GreenfootImage("game_screen_background.jpg");
+      pw.setBackground(img);
+      
+      pw.addObject(new Dashboard(),890,140);
+      pw.addObject(new Canvas(),245,245);
+      pw.addObject(new LeftButton(),100,535);
+      pw.addObject(new RightButton(),650,535);
 
-            pw.removeObjects(modeScreen);
-            pw.removeObjects(modeBtn);
-            pw.removeObjects(Htile);
-            pw.removeObjects(modeKnb);
-            List startScreen =  pw.getObjects(StartScreen.class);
-            List startBtn =  pw.getObjects(CommandButton.class);
-            pw.removeObjects(startScreen);
-            pw.removeObjects(startBtn);
-            GreenfootImage img = new GreenfootImage("game_screen_background.jpg");
-            pw.setBackground(img);
-            pw.addObject(new ImageContainer(),400,525);
-            pw.addObject(new Dashboard(),890,140);
-            pw.addObject(new LeftButton(),100,535);
-            pw.addObject(new RightButton(),650,535);
-            pw.addObject(new MessageBoard(),650,350);
-            pw.addObject(new ImageContainerBoard(),650,100);
-            pw.addObject(new LeftImage(),320,535);
+               
+      pw.addObject(new MessageBoard(),650,350);
+      pw.addObject(new ImageContainerBoard(),650,100);
+             
+      pw.addObject(new LeftImage(),320,535);
             pw.addObject(new MiddleImage(),500,535);
-          //  pw.addObject(new RightImage(),480,535);
-            int cntX =0;
+      //pw.addObject(new RightImage(),480,535); 
+      
+      int cntX =0;
             int cntY =0;
             int i=0;
             for (int x = 0; x < 3; x++) {  
@@ -66,16 +105,6 @@ public class SelectModeButton extends CommandButton
 
             }
 
-           
-            //             pw.addObject(new Canvas(),105,99);
-            //             pw.addObject(new Canvas(),230,99);
-            //             pw.addObject(new Canvas(),355,99);
-            //             pw.addObject(new Canvas(),105,205);
-            //             pw.addObject(new Canvas(),230,206);
-            //             pw.addObject(new Canvas(),355,206);
-            //             pw.addObject(new Canvas(),104,309);
-            //             pw.addObject(new Canvas(),230,310);
-            //             pw.addObject(new Canvas(),354,310);
-        }   
     }
+    
 }
