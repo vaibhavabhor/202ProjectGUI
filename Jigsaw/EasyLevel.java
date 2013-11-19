@@ -2,67 +2,35 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 
 /**
- * Write a description of class SelectModeButton here.
+ * Write a description of class EasyLevel here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class SelectModeButton extends CommandButton
+public class EasyLevel extends Actor implements IScreen
 {
     /**
-     * Act - do whatever the SelectModeButton wants to do. This method is called whenever
+     * Act - do whatever the EasyLevel wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     int mouseX, mouseY;
     List modeScreen,modeBtn,Htile,modeKnb;
     public static HashMap matrix =  new HashMap();
     public static Boolean modeFlag = false;
+    World pw;
+        
+    public EasyLevel(World world)
+    {
+        pw = world;
+    }
     
     public void act() 
     {
-        World pw = getWorld();
-        modeFlag = true;
-                
-        modeKnb = pw.getObjects(ModeKnob.class);
-        // Add your action code here.
-         if(Greenfoot.mousePressed(this))
-        {
-            //ModeKnob knob = modeKnb[0];
-            
-            for (Object obj : modeKnb)  
-            {  
-                ModeKnob knob = (ModeKnob) obj; // sub-casting  
-                mouseX = knob.getX();
-                mouseY = knob.getY();
-                System.out.println("Knob cooridnates are "+ mouseX + " and "+ mouseY );
-                // change location of 'ps'  
-                
-            if (mouseY > 240
-                && mouseY < 260)
-            {
-                if(mouseX > 466 
-                && mouseX < 480)
-                {
-                    System.out.println("Its easy level!");
-                    Actor easy = new EasyLevel(pw);
-                    pw.addObject(easy,890,140);
-                     //navigate(pw);
-                }  
-                else if(mouseX > 668 
-                && mouseX < 680)
-                {
-                    System.out.println("Its hard level!");
-                    Actor easy = new HardLevel(pw);
-                    pw.addObject(easy,890,140);
-                    //navigate(pw);
-                }
-            }
-            }
-        } 
-    }
-    
-    public void navigate(World pw)
-    {
+      modeScreen =  pw.getObjects(ModeScreen.class);
+      modeBtn =  pw.getObjects(SelectModeButton.class);
+      Htile = pw.getObjects(HTile.class);
+      modeKnb = pw.getObjects(ModeKnob.class);
+       
       pw.removeObjects(modeScreen);
       pw.removeObjects(modeBtn);
       pw.removeObjects(Htile);
@@ -108,7 +76,6 @@ public class SelectModeButton extends CommandButton
                 cntX=0;
 
             }
-
-    }
-    
+        // Add your action code here.
+    }    
 }
