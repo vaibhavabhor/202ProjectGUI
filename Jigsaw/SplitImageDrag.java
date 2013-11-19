@@ -59,6 +59,7 @@ public class SplitImageDrag extends Image
                     nameCanvas = (String)SelectModeButton.matrix.get(i);
                     break;
                 }
+            
             }
             
            System.out.println("kal split image name::: "+ Canvas.splitImagesMap.get(this.getImage()) + "kal canvas name:: "+ nameCanvas);

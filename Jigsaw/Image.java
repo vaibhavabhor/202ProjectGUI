@@ -19,7 +19,9 @@ public class Image extends Actor
     public Image()
     {
         GreenfootImage img = getImage();
+        img.scale(130,130);
         setImage(img);
+        
     }
 
     public void act() 
@@ -34,47 +36,47 @@ public class Image extends Actor
            
         }  
 
-        if(Greenfoot.mouseDragEnded(this))
-        {
-            int finalX = mouseX;
-            int finalY = mouseY;
-            String nameCanvas= null;
-            coordiantesArray = new ArrayList();
-            coordiantesArray.add(finalX);
-            coordiantesArray.add(finalY);
-            coordiantesArray.add(name);
-            coordiantesArray.add(index);
-            String name = (String) Canvas.splitImagesMap.get(this.getImage());
-            System.out.println("name :: " + name + "  " + this.getImage());
-            List list = pw.getObjects(Canvas.class);
-            List matrixList = pw.getObjectsAt(finalX, finalY, Canvas.class);
-            Actor canvas = (Actor) matrixList.get(0);
-            for(int i =0;i<list.size();i++)
-            {
-                Actor canvasAll = (Actor) list.get(i);
-                if(canvas.equals(canvasAll))
-                {
-                    System.out.println("Found");
-                    nameCanvas = (String)SelectModeButton.matrix.get(i);
-                    break;
-                }
-            
-            }
-            
-            System.out.println("kal::: "+ Canvas.splitImagesMap.get(this.getImage()) + "kal:: "+ nameCanvas);
-            
-           if(nameCanvas.equals(Canvas.splitImagesMap.get(this.getImage())))
-           {
-                  System.out.println("matching");
-           }
-           else
-           {
-             //  this.setLocation(666,100);
-               System.out.println("not matching");
-           }
-               
-               
-       }
+//         if(Greenfoot.mouseDragEnded(this))
+//         {
+//             int finalX = mouseX;
+//             int finalY = mouseY;
+//             String nameCanvas= null;
+//             coordiantesArray = new ArrayList();
+//             coordiantesArray.add(finalX);
+//             coordiantesArray.add(finalY);
+//             coordiantesArray.add(name);
+//             coordiantesArray.add(index);
+//             String name = (String) Canvas.splitImagesMap.get(this.getImage());
+//             System.out.println("name :: " + name + "  " + this.getImage());
+//             List list = pw.getObjects(Canvas.class);
+//             List matrixList = pw.getObjectsAt(finalX, finalY, Canvas.class);
+//             Actor canvas = (Actor) matrixList.get(0);
+//             for(int i =0;i<list.size();i++)
+//             {
+//                 Actor canvasAll = (Actor) list.get(i);
+//                 if(canvas.equals(canvasAll))
+//                 {
+//                     System.out.println("Found");
+//                     nameCanvas = (String)SelectModeButton.matrix.get(i);
+//                     break;
+//                 }
+//             
+//             }
+//             
+//             System.out.println("kal::: "+ Canvas.splitImagesMap.get(this.getImage()) + "kal:: "+ nameCanvas);
+//             
+//            if(nameCanvas.equals(Canvas.splitImagesMap.get(this.getImage())))
+//            {
+//                   System.out.println("matching");
+//            }
+//            else
+//            {
+//              //  this.setLocation(666,100);
+//                System.out.println("not matching");
+//            }
+//                
+//                
+//        }
        
 } 
 

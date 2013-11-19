@@ -22,11 +22,7 @@ public class HardLevel extends Actor implements IScreen
     public HardLevel(World world)
     {
         pw = world;
-    }
-    
-    public void act() 
-    {
-      modeScreen =  pw.getObjects(ModeScreen.class);
+        modeScreen =  pw.getObjects(ModeScreen.class);
       modeBtn =  pw.getObjects(SelectModeButton.class);
       Htile = pw.getObjects(HTile.class);
       modeKnb = pw.getObjects(ModeKnob.class);
@@ -77,5 +73,10 @@ public class HardLevel extends Actor implements IScreen
 
             }
         // Add your action code here.
+    }
+    
+    public void act() 
+    {
+      
     }    
 }
