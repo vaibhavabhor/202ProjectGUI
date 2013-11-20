@@ -22,7 +22,7 @@ public class Canvas extends Actor
     {
         World pw = getWorld();
 
-        if(EasyLevel.modeFlag==false){
+        if(SelectModeButton.modeFlag==false){
 
             if(isTouching(LeftImage.class))
             {
@@ -49,7 +49,7 @@ public class Canvas extends Actor
             }
         }
 
-        else if(EasyLevel.modeFlag==true)
+        else if(SelectModeButton.modeFlag==true)
         {
             if(isTouching(LeftImage.class))
             {
