@@ -41,10 +41,9 @@ public class HardLevel extends Actor implements IScreen
         pw.addObject(new RightButton(),650,535);
         pw.addObject(new MessageBoard(),650,350);
 
-        Timer testTimer = new Timer();
-        pw.addObject(testTimer, 650, 350);
-        testTimer.start_timer();
-
+        
+        pw.addObject(new Timer(), 650, 350);
+        
         pw.addObject(new ImageContainerBoard(),650,100);
 
         pw.addObject(new LeftImage(),320,535);

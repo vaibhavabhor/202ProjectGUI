@@ -11,11 +11,15 @@ public class SplitImageDrag extends Image
     GreenfootImage image;
     int mouseX, mouseY, index;
     String nameCanvas= null;
+    String nameimage = null;
+    String nameimage1 = null;
     String name=null;
+     public static int size = 0;
         
     
     public SplitImageDrag()
     {
+        size = Canvas.splitImagesMap.size();
       //  GreenfootImage img = getImage();
        // setImage(img);
     }
@@ -69,10 +73,12 @@ public class SplitImageDrag extends Image
             
            if(nameCanvas.equals(Canvas.splitImagesMap.get(this.getImage())))
            {
+               
                counter--;  
                System.out.println("matching");
                System.out.println("Counter :: " + counter);
                correct = true;
+               size--;
            }           
            else
            {
@@ -81,6 +87,10 @@ public class SplitImageDrag extends Image
            }
            // this is final flag. it will true only if all images are place correctly.
            System.out.println("Final Flag :: " + correct);
+           if(correct = true && size <=0)
+                {
+                    Canvas.split_flag = "false";
+                }
             
            }
        }

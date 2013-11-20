@@ -9,6 +9,8 @@ public class Canvas extends Actor
 {
     public static HashMap splitImagesMap = null;
     public static ArrayList splitImagesList = null;
+    public static String split_flag = "false";
+
 
     public Canvas()
     {     
@@ -25,6 +27,7 @@ public class Canvas extends Actor
             if(isTouching(LeftImage.class))
             {
                 splitImageIntoChunks("panda.jpg",3);
+                split_flag = "true";
                 notifyImageBoard(9);
                 removeTouching(LeftImage.class);
             }
@@ -32,6 +35,7 @@ public class Canvas extends Actor
             else if(isTouching(MiddleImage.class))
             {
                 splitImageIntoChunks("penguin.jpg",3);
+                split_flag = "true";
                 notifyImageBoard(9);
                 removeTouching(MiddleImage.class);
             }
@@ -39,6 +43,7 @@ public class Canvas extends Actor
             else if(isTouching(RightImage.class))
             {
                 splitImageIntoChunks("minion.jpg",3);
+                split_flag = "true";
                 notifyImageBoard(9);
                 removeTouching(RightImage.class);
             }
@@ -50,6 +55,7 @@ public class Canvas extends Actor
             {
                 System.out.println("Left Image Split");
                 splitImageIntoChunks("panda.jpg",4);
+                split_flag = "true";
                 notifyImageBoard(16);
                 removeTouching(LeftImage.class);
             }
@@ -58,6 +64,7 @@ public class Canvas extends Actor
             {
                 System.out.println("Middle Image Split");
                 splitImageIntoChunks("penguin.jpg",4);
+                split_flag = "true";
                 notifyImageBoard(16);
                 removeTouching(MiddleImage.class);
             }
@@ -66,6 +73,7 @@ public class Canvas extends Actor
             {
                 System.out.println("Right Image Split");
                 splitImageIntoChunks("minion.jpg",4);
+                split_flag = "true";
                 notifyImageBoard(16);
                 removeTouching(RightImage.class);
             }

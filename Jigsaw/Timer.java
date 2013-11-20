@@ -24,25 +24,23 @@ public class Timer extends Actor
 
     public void start_timer()
     {
-//if(Level2.timer_flag == 1 || Level3.timer_flag == 1 || Level1.timer_flag == 1){
-    elapsedTime = (int) (System.currentTimeMillis() - initialTime);
-    updateImage();
+        if(Canvas.split_flag == "true"){
+        elapsedTime = (int) (System.currentTimeMillis() - initialTime);
+        updateImage();
     
-//}
-//else
-//{
-  //  updateBlankImage();
+        }
+        else if(SplitImageDrag.correct = true && SplitImageDrag.size <= 0)
+        {
+            updateBlankImage();
+        }
     }
-
 public void updateImage()
     {
     int millis = elapsedTime % 1000;
     secs = (elapsedTime / 1000) % 60;
     // System.out.println("Inside timer: " + secs);
     int mins = elapsedTime / 60000;
-    if(secs == 5){
-        initialTime = System.currentTimeMillis();
-    }
+   
     String millisText = String.format("%02d", millis);
     String secsText = String.format("%02d", secs);
     String minsText = "" + mins;
