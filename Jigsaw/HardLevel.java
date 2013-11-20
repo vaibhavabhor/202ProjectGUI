@@ -54,14 +54,15 @@ public class HardLevel extends Actor implements IScreen
         int cntX =0;
         int cntY =0;
         int i=0;
-        for (int x = 0; x < 3; x++) {  
+        for (int x = 0; x < 4; x++) {  
 
-            for (int y = 0; y < 3; y++) {  
+            for (int y = 0; y < 4; y++) {  
                 Canvas chunkgrid = new Canvas();
                 GreenfootImage imggrid = new GreenfootImage("3x3grid.jpg");
+                imggrid.scale(90,70);
                 chunkgrid.setImage(imggrid); 
-                pw.addObject(chunkgrid,105+cntX,99+cntY);
-                cntX=cntX+121;
+                pw.addObject(chunkgrid,94+cntX,77+cntY);
+                cntX=cntX+92;
                 int midX = imggrid.getWidth();
                 int midY = imggrid.getHeight();
                 String imageName = "img"+ i +".jpg";
@@ -69,7 +70,7 @@ public class HardLevel extends Actor implements IScreen
                 SelectModeButton.matrix.put(i,imageName);
                 i++;
             }
-            cntY = cntY+121;
+            cntY = cntY+72;
             cntX=0;
 
         }

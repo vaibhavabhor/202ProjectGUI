@@ -19,29 +19,61 @@ public class Canvas extends Actor
     public void act() 
     {
         World pw = getWorld();
-        if(isTouching(LeftImage.class))
-        {
-            splitImageIntoChunks("panda.jpg");
-            notifyImageBoard();
-            removeTouching(LeftImage.class);
+
+        if(EasyLevel.modeFlag==false){
+
+            if(isTouching(LeftImage.class))
+            {
+                splitImageIntoChunks("panda.jpg",3);
+                notifyImageBoard(9);
+                removeTouching(LeftImage.class);
+            }
+
+            else if(isTouching(MiddleImage.class))
+            {
+                splitImageIntoChunks("penguin.jpg",3);
+                notifyImageBoard(9);
+                removeTouching(MiddleImage.class);
+            }
+
+            else if(isTouching(RightImage.class))
+            {
+                splitImageIntoChunks("minion.jpg",3);
+                notifyImageBoard(9);
+                removeTouching(RightImage.class);
+            }
         }
-        
-        else if(isTouching(MiddleImage.class))
+
+        else if(EasyLevel.modeFlag==true)
         {
-            splitImageIntoChunks("penguin.jpg");
-            notifyImageBoard();
-            removeTouching(MiddleImage.class);
+            if(isTouching(LeftImage.class))
+            {
+                System.out.println("Left Image Split");
+                splitImageIntoChunks("panda.jpg",4);
+                notifyImageBoard(16);
+                removeTouching(LeftImage.class);
+            }
+
+            else if(isTouching(MiddleImage.class))
+            {
+                System.out.println("Middle Image Split");
+                splitImageIntoChunks("penguin.jpg",4);
+                notifyImageBoard(16);
+                removeTouching(MiddleImage.class);
+            }
+
+            else if(isTouching(RightImage.class))
+            {
+                System.out.println("Right Image Split");
+                splitImageIntoChunks("minion.jpg",4);
+                notifyImageBoard(16);
+                removeTouching(RightImage.class);
+            }
         }
-        
-        else if(isTouching(RightImage.class))
-        {
-            splitImageIntoChunks("minion.jpg");
-            notifyImageBoard();
-            removeTouching(RightImage.class);
-        }
+
     }   
 
-    public void splitImageIntoChunks(String imageName)
+    public void splitImageIntoChunks(String imageName, int pieces)
     {
         try{
 
@@ -49,8 +81,8 @@ public class Canvas extends Actor
             FileInputStream fis = new FileInputStream(file);  
             BufferedImage image = ImageIO.read(fis); //reading the image file  
 
-            int rows = 3; //You should decide the values for rows and cols variables  
-            int cols = 3;  
+            int rows = pieces; //You should decide the values for rows and cols variables  
+            int cols = pieces;  
             int chunks = rows * cols;  
 
             int chunkWidth = image.getWidth() / cols; // determines the chunk width and height  
@@ -83,12 +115,12 @@ public class Canvas extends Actor
         }
     }  
 
-    public void notifyImageBoard()
+    public void notifyImageBoard(int displayPieces)
     {
         int cnt=0;
         World w = getWorld();
-
-        for (int i=0;i<9;i++)
+       
+        for (int i=0;i<displayPieces;i++)
         {
             SplitImageDrag chunk = new SplitImageDrag();
             GreenfootImage img = new GreenfootImage("img"+i+".jpg");
@@ -96,11 +128,11 @@ public class Canvas extends Actor
             w.addObject(chunk,700+cnt,100);
             cnt=cnt+10;
             String splitImageName  = "img"+i+".jpg";
-           splitImagesMap.put(chunk.getImage(),splitImageName);
-           System.out.println("kalyani :: " + chunk.getImage());
+            splitImagesMap.put(chunk.getImage(),splitImageName);
+            System.out.println("kalyani :: " + chunk.getImage());
         }
-        
-       System.out.println("splitImages:: " + splitImagesMap.size());
+
+        System.out.println("splitImages:: " + splitImagesMap.size());
     }
 }
 

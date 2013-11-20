@@ -46,6 +46,7 @@ public class SelectModeButton extends CommandButton
                     if(mouseX > 466 
                     && mouseX < 480)
                     {
+                        EasyLevel.modeFlag = false;
                         System.out.println("Its easy level!");
                     //    navigate(pw);
                        Actor easy = new EasyLevel(pw);
@@ -54,6 +55,7 @@ public class SelectModeButton extends CommandButton
                     else if(mouseX > 668 
                     && mouseX < 680)
                     {
+                        EasyLevel.modeFlag = true;
                         System.out.println("Its hard level!");
                      //   navigate(pw);
                          Actor hard = new HardLevel(pw);
