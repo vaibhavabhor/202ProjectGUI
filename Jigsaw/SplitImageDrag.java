@@ -6,22 +6,18 @@ public class SplitImageDrag extends Image
     public static ArrayList coordiantesArray = null;
     public static ArrayList tempArray = new ArrayList();
     public static HashMap imageCoordinateMap = new HashMap();
-    public static int counter=9;
     public static Boolean correct = false; //this is final flag. it will true only if all images are place correctly.
     GreenfootImage image;
     int mouseX, mouseY, index;
-    String nameCanvas= null;
-    String nameimage = null;
-    String nameimage1 = null;
-    String name=null;
-     public static int size = 0;
-        
+    String nameCanvas = null;
+    String name = null;
+    public static ArrayList<String> nameImage = null; 
+    public static int noOfSplitImages = 0;
     
     public SplitImageDrag()
     {
-        size = Canvas.splitImagesMap.size();
-      //  GreenfootImage img = getImage();
-       // setImage(img);
+        nameImage = new ArrayList<String>();
+        noOfSplitImages = Canvas.splitImagesMap.size() ;
     }
 
     public void act() 
@@ -73,12 +69,19 @@ public class SplitImageDrag extends Image
             
            if(nameCanvas.equals(Canvas.splitImagesMap.get(this.getImage())))
            {
-               
-               counter--;  
-               System.out.println("matching");
-               System.out.println("Counter :: " + counter);
-               correct = true;
-               size--;
+               if(nameImage.contains(name)){
+                   System.out.println("same image");
+                
+              }
+              else
+              {
+                  
+                System.out.println("matching");
+
+                correct = true;
+                nameImage.add(name);
+                
+              }
            }           
            else
            {
@@ -86,11 +89,14 @@ public class SplitImageDrag extends Image
                System.out.println("not matching");
            }
            // this is final flag. it will true only if all images are place correctly.
-           System.out.println("Final Flag :: " + correct);
-           if(correct = true && size <=0)
-                {
+            System.out.println("Final Flag :: " + correct);
+            System.out.println("noOfSplitImages :: " + noOfSplitImages);
+            System.out.println("nameImage.size() :: " + nameImage.size());
+            
+            if(nameImage.size() == noOfSplitImages)
+            {
                     Canvas.split_flag = "false";
-                }
+            }
             
            }
        }
