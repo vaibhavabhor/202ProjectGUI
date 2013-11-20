@@ -141,6 +141,33 @@ public class Canvas extends Actor
         }
 
         System.out.println("splitImages:: " + splitImagesMap.size());
+        
+        updateImageContainer();
+    }
+      /*Replace the sliding images on the image container with buttons*/
+    public void updateImageContainer()
+    {
+         CommandButton btnPlayAgain = new PlayAgainButton();
+         CommandButton btnExit = new ExitButton();
+     
+         
+          World w = getWorld();
+            java.util.List leftImage =  w.getObjects(LeftImage.class);
+            java.util.List rightImage =  w.getObjects(RightImage.class);
+            java.util.List middleImage =  w.getObjects(MiddleImage.class);
+            java.util.List rightBtn =  w.getObjects(RightButton.class);
+            java.util.List leftBtn =  w.getObjects(LeftButton.class);
+           
+           
+            w.removeObjects(leftImage);
+            w.removeObjects(rightImage);
+            w.removeObjects(middleImage);
+            w.removeObjects(rightBtn);
+            w.removeObjects(leftBtn);
+        
+         
+         w.addObject(btnPlayAgain,200,550);
+         w.addObject(btnExit,500,550);
     }
 }
 
