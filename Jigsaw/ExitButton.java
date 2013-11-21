@@ -14,7 +14,7 @@ public class ExitButton extends CommandButton
      */
     public void act() 
     {
-       if(Greenfoot.mouseClicked(this))
+       if(Greenfoot.mousePressed(this))
         {
          System.exit(0);
         }
